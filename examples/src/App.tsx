@@ -5,8 +5,12 @@ function App() {
 
   return (
     <div>
-      <DynamicDiv>
-        <span className='test'>testing</span>
+      <DynamicDiv scalable>
+        <div className='test'>
+          <span>testing</span>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla accusantium aliquam recusandae alias nihil eius est quis quas at, vitae, odit dolor deleniti quaerat. Laboriosam ut repellendus expedita eaque aliquid.</p>
+
+        </div>
       </DynamicDiv>
     </div>
   )
