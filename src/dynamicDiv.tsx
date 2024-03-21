@@ -75,10 +75,8 @@ export default function DynamicDiv(props: DynamicDivProps) {
   }
 
   return (
-    <div className={shadow && styles.container}>
-      <animated.div ref={domTarget} className={shadow && styles.card} style={dynamicDivStyles}>
-        <animated.div>{props.children}</animated.div>
-      </animated.div>
-    </div>
+    <animated.div ref={domTarget} className={shadow && styles.card} style={dynamicDivStyles}>
+      <animated.div>{props.children}</animated.div>
+    </animated.div>
   )
 }
