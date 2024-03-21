@@ -6,7 +6,11 @@ import styles from './styles.module.css'
 const calcX = (y: number, ly: number) => -(y - ly - window.innerHeight / 2) / 20
 const calcY = (x: number, lx: number) => (x - lx - window.innerWidth / 2) / 20
 
+type fixed = 'fixed' | 'relative' | 'absolute' | undefined
+
 interface DynamicDivProps {
+  top?: number
+  left?: number
   shadow?: boolean
   scalable?: boolean
   perspective?: boolean
@@ -14,6 +18,8 @@ interface DynamicDivProps {
 }
 
 export default function DynamicDiv(props: DynamicDivProps) {
+  const top = props.top ?? 10
+  const left = props.left ?? 10
   const shadow = props.shadow
   const scalable = props.scalable
   const perspective = props.perspective
@@ -36,8 +42,8 @@ export default function DynamicDiv(props: DynamicDivProps) {
     rotateZ: 0,
     scale: 1,
     zoom: 0,
-    x: 0,
-    y: 0,
+    x: left,
+    y: top,
     config: { mass: 5, tension: 350, friction: 40 },
   }))
 
@@ -57,10 +63,11 @@ export default function DynamicDiv(props: DynamicDivProps) {
     { domTarget, eventOptions: { passive: false } },
   )
 
-  let dynamicDivStyles = {
+  const dynamicDivStyles = {
+    position: 'fixed' as fixed,
     transform: perspective ? 'perspective(600px)' : undefined,
-    x,
-    y,
+    left: x,
+    top: y,
     scale: scalable ? to([scale, zoom], (s, z) => s + z) : undefined,
     rotateX: perspective ? rotateX : undefined,
     rotateY: perspective ? rotateY : undefined,
