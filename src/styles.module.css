@@ -17,13 +17,13 @@
 
 .drag-el {
   position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate(-20%, -15%);
+  top: 2.5%;
+  right: 2.5%;
+  transform: translate(-20%, -15%) rotate(90deg);
   font-size: 1.5em;
   width: fit-content;
   box-sizing: border-box;
-  padding: 0em 0.05em !important;
+  padding: 0.05em 0.05em !important;
   background-color: white;
   color: rgb(0, 170, 204, 0.3);
   border-radius: 7px;
