@@ -17,9 +17,9 @@
 
 .drag-el {
   position: absolute;
-  top: 2.5%;
-  right: 2.5%;
-  transform: translate(-20%, -15%) rotate(90deg);
+  top: 2%;
+  right: 2%;
+  transform: translate(-50%, 0%) rotate(90deg);
   font-size: 1.5em;
   width: fit-content;
   box-sizing: border-box;
