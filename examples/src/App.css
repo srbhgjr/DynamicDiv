@@ -40,9 +40,18 @@
   width: 20em;
   height: 20em;
   padding: 3em;
-  border: 1px solid black
+  /* border-radius: 10px;
+  border: 2px solid rgb(0, 170, 204, 0.25) */
 }
 
 .read-the-docs {
   color: #888;
+}
+
+.test-div {
+  height: 7em;
+  width: 7em; 
+  background: rgb(0, 170, 204);
+  border-radius: 7px;
+  box-shadow: 0px 5px 20px -5px rgba(0, 0, 0, 0.25);
 }

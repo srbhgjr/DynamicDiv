@@ -1,6 +1,6 @@
 {
   "name": "dynamic-div",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "movable div made with react spring",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -54,6 +54,7 @@
     "README.md"
   ],
   "dependencies": {
+    "@ant-design/icons": "^5.3.6",
     "@react-spring/web": "^9.7.3",
     "react-use-gesture": "^9.1.3"
   },

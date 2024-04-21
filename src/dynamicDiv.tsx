@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, ReactNode } from 'react'
 import { useSpring, animated, to } from '@react-spring/web'
 import { useGesture } from 'react-use-gesture'
+import { HolderOutlined } from '@ant-design/icons'
 import styles from './styles.module.css'
 
 const calcX = (y: number, ly: number) => -(y - ly - window.innerHeight / 2) / 20
@@ -15,6 +16,7 @@ interface DynamicDivProps {
   scalable?: boolean
   perspective?: boolean
   children?: ReactNode
+  draggableRef?: React.MutableRefObject<any>
 }
 
 export default function DynamicDiv(props: DynamicDivProps) {
@@ -23,6 +25,8 @@ export default function DynamicDiv(props: DynamicDivProps) {
   const shadow = props.shadow
   const scalable = props.scalable
   const perspective = props.perspective
+  const domTarget = useRef(null)
+  const draggableRef = props.draggableRef ?? null
 
   useEffect(() => {
     const preventDefault = (e: Event) => e.preventDefault()
@@ -35,7 +39,6 @@ export default function DynamicDiv(props: DynamicDivProps) {
     }
   }, [])
 
-  const domTarget = useRef(null)
   const [{ x, y, rotateX, rotateY, rotateZ, zoom, scale }, api] = useSpring(() => ({
     rotateX: 0,
     rotateY: 0,
@@ -49,18 +52,18 @@ export default function DynamicDiv(props: DynamicDivProps) {
 
   useGesture(
     {
-      onDrag: ({ active, offset: [x, y] }) => api({ x, y, rotateX: 0, rotateY: 0, scale: active ? 1 : 1.1 }),
+      onDrag: ({ active, offset: [x, y] }) => api({ x, y, rotateX: 0, rotateY: 0, scale: active ? 1 : 1.05 }),
       onPinch: ({ offset: [d, a] }) => api({ zoom: d / 200, rotateZ: a }),
       onMove: ({ xy: [px, py], dragging }) =>
         !dragging &&
         api({
           rotateX: calcX(py, y.get()),
           rotateY: calcY(px, x.get()),
-          scale: 1.1,
+          scale: 1.05,
         }),
       onHover: ({ hovering }) => !hovering && api({ rotateX: 0, rotateY: 0, scale: 1 }),
     },
-    { domTarget, eventOptions: { passive: false } },
+    { domTarget: draggableRef ?? domTarget, eventOptions: { passive: false } },
   )
 
   const dynamicDivStyles = {
@@ -75,8 +78,13 @@ export default function DynamicDiv(props: DynamicDivProps) {
   }
 
   return (
-    <animated.div ref={domTarget} className={shadow && styles.card} style={dynamicDivStyles}>
-      <animated.div>{props.children}</animated.div>
+    <animated.div className={shadow && styles.card} style={dynamicDivStyles}>
+      {!draggableRef && (
+        <div className={styles['drag-el']} ref={domTarget}>
+          <HolderOutlined />
+        </div>
+      )}
+      {props.children}
     </animated.div>
   )
 }
