@@ -1,65 +1,41 @@
 {
   "name": "dynamic-div",
-  "version": "1.1.2",
-  "description": "movable div made with react spring",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
-  "types": "./dist/esm/index.d.ts",
+  "version": "1.0.0",
+  "description": "",
   "scripts": {
-    "build": "rm -rf ./dist && yarn build:esm && yarn build:cjs && yarn copy:css",
-    "build:esm": "tsc",
-    "build:cjs": "tsc --module commonjs --outDir dist/cjs",
-    "copy:css": "yarn copy:css:esm && yarn copy:css:cjs",
-    "copy:css:esm": "copyfiles -u 1 src/**/*.css dist/esm",
-    "copy:css:cjs": "copyfiles -u 1 src/**/*.css dist/cjs",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint \"{**/*,*}.{js,ts,jsx,tsx}\"",
-    "prettier": "prettier --write \"{src,tests,example/src}/**/*.{js,ts,jsx,tsx}\"",
-    "test": "jest --config jestconfig.json",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm run prettier && npm run lint"
-  },
-  "keywords": [
-    "dynamic div",
-    "movable div",
-    "react spring"
-  ],
-  "author": "saurabh gajjar",
-  "license": "ISC",
-  "devDependencies": {
-    "@testing-library/react": "^14.2.1",
-    "@types/jest": "^29.5.12",
-    "@types/react": "^18.2.61",
-    "@typescript-eslint/eslint-plugin": "^7.1.0",
-    "@typescript-eslint/parser": "^7.1.0",
-    "copyfiles": "^2.4.1",
-    "eslint": "^8.57.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.1.3",
-    "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "jest": "^29.7.0",
-    "jest-canvas-mock": "^2.5.2",
-    "jest-environment-jsdom": "^29.7.0",
-    "prettier": "^3.2.5",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "ts-jest": "^29.1.2",
-    "typescript": "^5.3.3"
-  },
-  "peerDependencies": {
-    "react": ">=16"
-  },
-  "files": [
-    "dist",
-    "README.md"
-  ],
-  "dependencies": {
-    "@ant-design/icons": "^5.3.6",
-    "@react-spring/web": "^9.7.3",
-    "react-use-gesture": "^9.1.3"
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html --dist-dir docs --public-url ."
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/srbhgjr/DynamicDiv"
+    "url": "git+https://github.com/srbhgjr/DynamicDiv.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/srbhgjr/DynamicDiv/issues"
+  },
+  "homepage": "https://github.com/srbhgjr/DynamicDiv#readme",
+  "devDependencies": {
+    "@types/react": "^18.2.79",
+    "@types/react-dom": "^18.2.25",
+    "@typescript-eslint/eslint-plugin": "^7.7.0",
+    "@typescript-eslint/parser": "^7.7.0",
+    "eslint": "^9.1.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "my-react-typescript-package": "^1.0.0",
+    "parcel": "^2.12.0",
+    "process": "^0.11.10",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "antd": "^5.16.2",
+    "dynamic-div": "^1.1.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }

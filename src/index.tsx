@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
-import { DynamicDiv } from '../../dist/esm/index'
-// import { DynamicDiv } from "dynamic-div";
+import React, { useRef } from 'react'
+import ReactDOM from 'react-dom/client'
+import { DynamicDiv } from 'dynamic-div'
 import { Radio } from "antd";
 
 const options = [
@@ -14,7 +14,7 @@ const options = [
   },
 ];
 
-export default function App() {
+const App = () => {
   const dragRef = useRef(null);
   const [selectedTarget, setSelectedTarget] = React.useState("no-target");
 
@@ -81,3 +81,10 @@ export default function App() {
     </div>
   );
 }
+
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
+root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>,
+)
